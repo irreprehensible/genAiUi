@@ -1,0 +1,31 @@
+.box {
+    width: 150px;
+    height: 150px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+
+    div {
+        font-family:Arial, Helvetica, sans-serif;
+        font-size: small;
+        div {
+            margin: 5px;
+            text-align: center;
+            img {
+                width: 85px;
+            }
+        }
+
+    }
+}
+
+.checkboxgroup {
+    margin-left: 32px;
+    border: 1px solid #DDD;
+    width: 10em;
+    overflow: auto;
+    border-style: outset;
+
+    div {
+        padding: 5px;
+    }
+}

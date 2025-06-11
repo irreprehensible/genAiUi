@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="row" style="margin-bottom: 32px;">
+        <h1>Bookings</h1>
+    </div>
+    <div class="row" *ngIf="showBookingOptions">
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <div class="box">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="radio" value="B1" [(ngModel)]="selectedOption" name="bookings"> Book Gas and pipe
+                    </div>
+                    <div class="col-md-12">
+                        <img src="../../../assets/gascan.png" alt="gas" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="radio" value="B2" [(ngModel)]="selectedOption" name="bookings"> Book Power and
+                        Utilities
+                    </div>
+                    <div class="col-md-12">
+                        <img src="../../../assets/power.png" alt="power" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="box">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="radio" value="B3" [(ngModel)]="selectedOption" name="bookings"> Others
+                    </div>
+                    <div class="col-md-12">
+                        <img src="../../../assets/others.png" alt="others" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <div class="row" *ngIf="showBookingOptions" style="margin-top:12px">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100" (click)="continue()">Continue</button>
+        </div>
+    </div>
+    <div class="row" *ngIf="!showBookingOptions">
+        <div class="checkboxgroup">
+            <ng-container *ngIf="selectedOption == 'B1'">
+                <div *ngFor="let step of bookingStepsGas"><input type="checkbox" id="{{step.value}}"
+                        value="{{step.value}}" [checked]="step.checked"> {{step.text}}</div>
+            </ng-container>
+            <ng-container *ngIf="selectedOption == 'B2'">
+                <div *ngFor="let step of bookingStepsPower"><input type="checkbox" id="{{step.value}}"
+                        value="{{step.value}}" [checked]="step.checked"> {{step.text}}</div>
+            </ng-container>
+            <ng-container *ngIf="selectedOption == 'B3'">
+                <div *ngFor="let step of bookingStepsOther"><input type="checkbox" id="{{step.value}}"
+                        value="{{step.value}}" [checked]="step.checked"> {{step.text}}</div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="row" *ngIf="!showBookingOptions" style="margin-top: 32px;">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary w-100">Next</button>
+        </div>
+    </div>
+</div>
