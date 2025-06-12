@@ -30,6 +30,9 @@ export class DashboardComponent implements OnInit {
       this._router.navigate([''])
     }
   }
+  public book() {
+    this.active = 'BOOKINGS'
+  }
   public logout() {
     localStorage.removeItem('user')
     this._router.navigate([''])
