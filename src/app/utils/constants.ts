@@ -6,8 +6,12 @@ export class Constants {
       ];
 
       public static BookingStepsGas = [
-        {"text":"option1", "value":"option1", "checked":false},
-        {"text":"option2", "value":"option2", "checked":false}
+        {"text":"Boliler", "value":"Boliler", "checked":false},
+        {"text":"Radiator", "value":"Radiator", "checked":false},
+        {"text":"Hot Water", "value":"HotWater", "checked":false},
+        {"text":"Pipework", "value":"Pipework", "checked":false},
+        {"text":"Thermostat", "value":"Thermostat", "checked":false},
+        {"text":"Time Clock", "value":"TimeClock", "checked":false}
       ]
 
       public static BookingStepsPower = [

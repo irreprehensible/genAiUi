@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row" style="margin-bottom: 32px;">
-        <h1>Bookings</h1>
+        <h1>Book an engineer</h1>
     </div>
     <div class="row" *ngIf="showBookingOptions">
         <div class="col-md-1"></div>
@@ -46,29 +46,70 @@
     <div class="row" *ngIf="showBookingOptions" style="margin-top:12px">
         <div class="col-md-2"></div>
         <div class="col-md-4">
-            <button type="submit" class="btn btn-primary w-100" (click)="continue()">Continue</button>
+            <button type="submit" class="btn btn-primary w-100" (click)="continue()">Continue to next step</button>
         </div>
     </div>
     <div class="row" *ngIf="!showBookingOptions">
-        <div class="checkboxgroup">
-            <ng-container *ngIf="selectedOption == 'B1'">
-                <div *ngFor="let step of bookingStepsGas"><input type="checkbox" id="{{step.value}}"
-                        value="{{step.value}}" [checked]="step.checked"> {{step.text}}</div>
+        <ng-container *ngIf="selectedOption == 'B1'">
+            <div style="font-weight: 600;font-size:xx-large;margin-bottom: 18px;">Gas & Heating Repair</div>
+            <ng-container *ngIf="!selectedDesc && !selectedResult">
+                <div style="font-weight: 600;font-size:x-large;margin-bottom: 18px">Where is the problem</div>
+                <div class="checkboxgroup">
+                    <div *ngFor="let step of bookingStepsGas"><input type="checkbox" id="{{step.value}}"
+                            value="{{step.value}}" [(ngModel)]="step.checked"> {{step.text}}</div>
+                </div>
             </ng-container>
-            <ng-container *ngIf="selectedOption == 'B2'">
+            <ng-container *ngIf="selectedDesc && !selectedResult">
+                <div style="font-weight: 600;font-size:x-large;margin-bottom: 18px">Where is the problem</div>
+                <div>
+                    <textarea id="gasDesc" cols="50" [(ngModel)]="gasDesc"></textarea>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="selectedAppointment">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" />
+                    </div>
+                    <div class="col-md-3">
+                        <div class="booking-time">
+                            <input type="radio" name="booking-time" value="8:00 - 10:00"  /> 8:00 - 10:00
+                        </div>
+                        <div class="booking-time">
+                            <input type="radio" name="booking-time" value="10:00 - 12:00"/> 10:00 - 12:00
+                        </div>
+                        <div class="booking-time"></div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="selectedResult && !selectedAppointment">
+                <div class="row">
+                    selection: 
+                    {{selectedResult | json}}
+                </div>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="selectedOption == 'B2'">
+            <div style="font-weight: 600;font-size:xx-large;margin-bottom: 18px;">Power Repair</div>
+            <div style="font-weight: 600;font-size:x-large;margin-bottom: 18px">Where is the problem</div>
+            <div class="checkboxgroup">
                 <div *ngFor="let step of bookingStepsPower"><input type="checkbox" id="{{step.value}}"
                         value="{{step.value}}" [checked]="step.checked"> {{step.text}}</div>
-            </ng-container>
-            <ng-container *ngIf="selectedOption == 'B3'">
+            </div>
+        </ng-container>
+        <ng-container *ngIf="selectedOption == 'B3'">
+            <div style="font-weight: 600;font-size:xx-large;margin-bottom: 18px;">Others</div>
+            <div style="font-weight: 600;font-size:x-large;margin-bottom: 18px">Where is the problem</div>
+            <div class="checkboxgroup">
                 <div *ngFor="let step of bookingStepsOther"><input type="checkbox" id="{{step.value}}"
                         value="{{step.value}}" [checked]="step.checked"> {{step.text}}</div>
-            </ng-container>
-        </div>
+            </div>
+        </ng-container>
     </div>
-    <div class="row" *ngIf="!showBookingOptions" style="margin-top: 32px;">
+    <div class="row" *ngIf="!showBookingOptions && !selectedResult" style="margin-top: 32px;">
         <div class="col-md-2"></div>
         <div class="col-md-4">
-            <button type="submit" class="btn btn-primary w-100">Next</button>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="checkDisabledBtn()"
+                (click)="continue()">Continue to next step</button>
         </div>
     </div>
 </div>
