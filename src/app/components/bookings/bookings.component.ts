@@ -28,6 +28,7 @@ export class BookingsComponent implements OnInit {
   public bookingStepsOther: any = Constants.BookingStepsOther;
 
   public gasDesc: string = '';
+  public bookingTime: any;
 
   ngOnInit(): void {
     this.showBookingOptions = true;
@@ -56,6 +57,7 @@ export class BookingsComponent implements OnInit {
           }
           else if(!this.selectedAppointment){
             this.selectedAppointment = true;
+            this.selectedDesc = false;
           }
           else {
             this.selectedAppointment = false;
@@ -63,7 +65,7 @@ export class BookingsComponent implements OnInit {
             this.selectedResult = {
               options: this.bookingStepsGas.filter((x: any) => { return x.checked }),
               description: this.gasDesc,
-              appointment: {date: this.model, time:''}
+              appointment: {date: this.model, time:this.bookingTime}
             }
           }
         }

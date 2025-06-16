@@ -52,7 +52,7 @@
     <div class="row" *ngIf="!showBookingOptions">
         <ng-container *ngIf="selectedOption == 'B1'">
             <div style="font-weight: 600;font-size:xx-large;margin-bottom: 18px;">Gas & Heating Repair</div>
-            <ng-container *ngIf="!selectedDesc && !selectedResult">
+            <ng-container *ngIf="!selectedDesc && !selectedResult && !selectedAppointment">
                 <div style="font-weight: 600;font-size:x-large;margin-bottom: 18px">Where is the problem</div>
                 <div class="checkboxgroup">
                     <div *ngFor="let step of bookingStepsGas"><input type="checkbox" id="{{step.value}}"
@@ -72,10 +72,10 @@
                     </div>
                     <div class="col-md-3">
                         <div class="booking-time">
-                            <input type="radio" name="booking-time" value="8:00 - 10:00"  /> 8:00 - 10:00
+                            <input type="radio" name="booking-time" [(ngModel)]="bookingTime" value="8:00 - 10:00"  /> 8:00 - 10:00
                         </div>
                         <div class="booking-time">
-                            <input type="radio" name="booking-time" value="10:00 - 12:00"/> 10:00 - 12:00
+                            <input type="radio" name="booking-time" [(ngModel)]="bookingTime" value="10:00 - 12:00"/> 10:00 - 12:00
                         </div>
                         <div class="booking-time"></div>
                     </div>
