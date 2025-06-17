@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Constants } from '../../utils/constants';
 import { NgbCalendar, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bookings',
@@ -12,12 +13,13 @@ import { NgbCalendar, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/n
   styleUrl: './bookings.component.scss'
 })
 export class BookingsComponent implements OnInit {
+  constructor(private _router: Router) {}
   today = inject(NgbCalendar).getToday();
 
 	model: NgbDateStruct = this.today;
 	date: { year: number; month: number; } | undefined;
-
-  public selectedOption: any;
+  @Output() public linkOverview: EventEmitter<any> = new EventEmitter<any>();
+  public selectedOption: any = 'B1';
   public showBookingOptions: boolean = true;
   public selectedDesc: boolean = false;
   public selectedResult: any = null;
@@ -28,7 +30,7 @@ export class BookingsComponent implements OnInit {
   public bookingStepsOther: any = Constants.BookingStepsOther;
 
   public gasDesc: string = '';
-  public bookingTime: any;
+  public bookingTime: any = '8am - 1pm';
 
   ngOnInit(): void {
     this.showBookingOptions = true;
@@ -92,4 +94,10 @@ export class BookingsComponent implements OnInit {
     }
     return res;
   }
+
+  public toOverview() {
+    this._router.navigate(['/dashboard'])
+  }
+
+
 }

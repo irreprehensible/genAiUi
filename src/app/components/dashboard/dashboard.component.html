@@ -89,10 +89,30 @@
                         <app-bookings></app-bookings>
                     </ng-container>
                     <ng-container *ngSwitchCase="'INVOICES'">
-                        <h2>Hello {{user?.name}}</h2>
-                        <h3>Your invoices,</h3>
+                        <div style="margin-bottom: 12px;color: darkblue;cursor: pointer;" (click)="toOverview()">Back to account overview</div>
+                        
                         <div class="container">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, ratione. Totam, excepturi. Sit necessitatibus culpa deleniti pariatur at consequuntur quasi explicabo alias illum, provident ea, dolor eum sapiente. Quisquam, harum!
+                            <h2>Your invoices</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="container" style="border: 1px solid black;border-radius: 6px;">
+                                        <div class="row" style="padding: 12px;">
+                                            <div class="col-md-12" style="color: darkblue;font-size: large;"><strong>Home Services</strong></div>
+                                        </div>
+                                        <div class="row" style="padding: 12px;">
+                                            <div class="col-md-12" style="font-size: large;"><strong>Home Care Number</strong><br>9876543210</div>
+                                        </div>
+                                        <div class="row" style="padding: 12px;">
+                                            <div class="col-md-12" style="font-size: large;"><strong>Address</strong><br><br>Dummy address</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="row" style="padding: 12px;">
+                                        <div class="col-md-12" style="font-size: large;"><strong>Outstanding Invoices</strong><br><br>No outstanding invoices.</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </ng-container>
                 </ng-container>

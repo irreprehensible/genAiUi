@@ -51,8 +51,8 @@
     </div>
     <div class="row" *ngIf="!showBookingOptions">
         <ng-container *ngIf="selectedOption == 'B1'">
-            <div style="font-weight: 600;font-size:xx-large;margin-bottom: 18px;">Gas & Heating Repair</div>
             <ng-container *ngIf="!selectedDesc && !selectedResult && !selectedAppointment">
+                <div style="font-weight: 600;font-size:xx-large;margin-bottom: 18px;">Gas & Heating Repair</div>
                 <div style="font-weight: 600;font-size:x-large;margin-bottom: 18px">Where is the problem</div>
                 <div class="checkboxgroup">
                     <div *ngFor="let step of bookingStepsGas"><input type="checkbox" id="{{step.value}}"
@@ -60,22 +60,31 @@
                 </div>
             </ng-container>
             <ng-container *ngIf="selectedDesc && !selectedResult">
-                <div style="font-weight: 600;font-size:x-large;margin-bottom: 18px">Where is the problem</div>
+                <div style="font-weight: 600;font-size:xx-large;margin-bottom: 18px;">Gas & Heating Repair</div>
+                <div style="font-weight: 600;font-size:x-large;margin-bottom: 18px">Kindly describe the issue in detail</div>
                 <div>
                     <textarea id="gasDesc" cols="50" [(ngModel)]="gasDesc"></textarea>
                 </div>
             </ng-container>
             <ng-container *ngIf="selectedAppointment">
-                <div class="row">
-                    <div class="col-md-4">
+                <div style="font-weight: 600;font-size:x-large;margin-bottom: 18px">Pick a time for your Engineer to arrive</div>
+                <div class="row" >
+                    <div class="row">
+                        <div class="col-md-7" style="background-color: #ddd;font-size: large;font-weight: bold;">Select a date and time</div>
+                    </div>
+                    <div class="col-md-4" style="margin-top:12px;">
                         <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" />
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3" style="margin-top:12px;">
+                        <div style="padding-bottom: 6px;font-size: large;font-weight: bold;">Available times</div>
                         <div class="booking-time">
-                            <input type="radio" name="booking-time" [(ngModel)]="bookingTime" value="8:00 - 10:00"  /> 8:00 - 10:00
+                            <input type="radio" name="booking-time" [(ngModel)]="bookingTime" value="8am - 1pm"  /> 8am - 1pm
                         </div>
                         <div class="booking-time">
-                            <input type="radio" name="booking-time" [(ngModel)]="bookingTime" value="10:00 - 12:00"/> 10:00 - 12:00
+                            <input type="radio" name="booking-time" [(ngModel)]="bookingTime" value="8am - 6pm"/> 8am - 6pm
+                        </div>
+                        <div class="booking-time">
+                            <input type="radio" name="booking-time" [(ngModel)]="bookingTime" value="12pm - 6pm"/> 12pm - 6pm
                         </div>
                         <div class="booking-time"></div>
                     </div>
@@ -83,8 +92,12 @@
             </ng-container>
             <ng-container *ngIf="selectedResult && !selectedAppointment">
                 <div class="row">
-                    selection: 
-                    {{selectedResult | json}}
+                    <h1>Appointment Booked! Thank You.​</h1>
+                    <h2>We've received your appointment request and will be
+                        in touch shortly to confirm the details!</h2>
+                </div>
+                <div>
+                    <div style="margin-bottom: 12px;color: darkblue;cursor: pointer;" (click)="toOverview()">Back to account overview</div>
                 </div>
             </ng-container>
         </ng-container>

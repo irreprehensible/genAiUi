@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   constructor(private _router: Router){}
+  
   public menuitems = Constants.Tabs;
   public active = Constants.Tabs[0].id;
   public user!: any
@@ -36,5 +37,9 @@ export class DashboardComponent implements OnInit {
   public logout() {
     localStorage.removeItem('user')
     this._router.navigate([''])
+  }
+
+  public toOverview() {
+    this.active = 'OVERVIEW'
   }
 }
