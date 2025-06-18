@@ -11,6 +11,6 @@ export const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
-        title: 'Home'
+        title: 'Dashboard'
     },
 ];

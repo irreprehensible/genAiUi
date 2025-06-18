@@ -19,7 +19,7 @@ export class BookingsComponent implements OnInit {
 	model: NgbDateStruct = this.today;
 	date: { year: number; month: number; } | undefined;
   @Output() public linkOverview: EventEmitter<any> = new EventEmitter<any>();
-  public selectedOption: any = 'B1';
+  public selectedOption: any;
   public showBookingOptions: boolean = true;
   public selectedDesc: boolean = false;
   public selectedResult: any = null;
@@ -96,7 +96,7 @@ export class BookingsComponent implements OnInit {
   }
 
   public toOverview() {
-    this._router.navigate(['/dashboard'])
+    window.location.reload();
   }
 
 

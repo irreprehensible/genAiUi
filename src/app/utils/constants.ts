@@ -6,7 +6,7 @@ export class Constants {
       ];
 
       public static BookingStepsGas = [
-        {"text":"Boliler", "value":"Boliler", "checked":false},
+        {"text":"Boiler", "value":"Boiler", "checked":false},
         {"text":"Radiator", "value":"Radiator", "checked":false},
         {"text":"Hot Water", "value":"HotWater", "checked":false},
         {"text":"Pipework", "value":"Pipework", "checked":false},
